@@ -17,6 +17,12 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FsEye.PropertyGrid.Plugin",
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FsEye.DataGridView.Plugin", "FsEye.DataGridView.Plugin\FsEye.DataGridView.Plugin.fsproj", "{CC563DCC-2EAF-4822-B4CE-9D80ACCA6B5E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Paket", "Paket", "{D15101AB-E35B-4890-843E-7E87B2640D82}"
+	ProjectSection(SolutionItems) = preProject
+		..\paket.dependencies = ..\paket.dependencies
+		..\paket.lock = ..\paket.lock
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
