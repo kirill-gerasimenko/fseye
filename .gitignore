@@ -2,3 +2,17 @@ Backup/
 UpgradeLog.htm
 .paket/paket.exe
 .vs/
+Debug.FsEye/bin/
+Debug.FsEye/obj/
+FsEye.DataGridView.Plugin/bin/
+FsEye.DataGridView.Plugin/obj/
+FsEye.PropertyGrid.Plugin/bin/
+FsEye.TreeView.Plugin/bin/
+FsEye.PropertyGrid.Plugin/obj/
+FsEye.TreeView.Plugin/obj/
+FsEye/bin/
+FsEye/obj/
+Test.FsEye/bin/
+Test.FsEye/obj/
+Utils/bin/
+Utils/obj/
