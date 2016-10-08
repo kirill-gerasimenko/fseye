@@ -19,7 +19,7 @@ module StartupScript
 #I __SOURCE_DIRECTORY__ //learned from http://stackoverflow.com/questions/4860991/f-for-scripting-location-of-script-file
 
 //should do dynamic action while building to toggle between this local path and the relative path
-#r "FsEye.dll" //release deployment expects this file next to the dll
+#r "../../build/FsEye.dll" //release deployment expects this file next to the dll
 //#r "bin/Release/FsEye.dll"
 
 
