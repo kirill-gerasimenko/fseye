@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>LINQPad</id>
+    <version>4.51.3</version>
+    <title>LINQPad (Official)</title>
+    <authors>Joe Albahari</authors>
+    <owners>Joe Albahari</owners>
+    <licenseUrl>http://www.linqpad.net/eula.txt</licenseUrl>
+    <projectUrl>http://www.linqpad.net/</projectUrl>
+    <iconUrl>http://www.linqpad.net/LINQPad128.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>LINQPad (Official). Use for referencing LINQPad from Visual Studio projects.</description>
+    <releaseNotes>See Help | What's New in LINQPad.</releaseNotes>
+    <copyright>Copyright 2007-2014</copyright>
+    <tags>LINQPad</tags>
+  </metadata>
+</package>
