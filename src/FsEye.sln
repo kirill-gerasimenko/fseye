@@ -25,6 +25,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Paket", "Paket", "{D15101AB
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FsEye.LinqPad.Plugin", "FsEye.LinqPad.Plugin\FsEye.LinqPad.Plugin.fsproj", "{4182585B-DF88-4D96-B52F-FE93FFD364D7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Fake", "Fake", "{B99E05B3-B358-4AB5-9A1B-ECC4A6858968}"
+	ProjectSection(SolutionItems) = preProject
+		..\build.cmd = ..\build.cmd
+		..\build.fsx = ..\build.fsx
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
