@@ -5,3 +5,4 @@ nuget ImpromptuInterface 5.6.7 framework: >= net40
 nuget ImpromptuInterface.FSharp 1.1.0 framework: >= net40
 nuget Unquote 2.2.2 framework: >= net40
 nuget xunit 1.9.1 framework: >= net40
+nuget LINQPad -pre framework: >= net40
