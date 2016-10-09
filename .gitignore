@@ -1,0 +1,9 @@
+Backup/
+UpgradeLog.htm
+.paket/paket.exe
+.vs/
+/bin/
+/obj/
+bin/
+obj/
+build/
