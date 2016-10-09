@@ -15,6 +15,7 @@ limitations under the License.
 *)
 namespace Swensen.FsEye.Forms
 open System.Windows.Forms
+open System.Drawing
 open System.Reflection
 
 open Swensen.Utils
@@ -285,12 +286,17 @@ type WatchTreeView(pluginManager: PluginManager option) as this =
 
             il
 
-        this.MouseWheel.Add <| fun args ->
-            let isUp = args.Delta > 0
+        this.Font <- Font (this.Font.FontFamily, this.Font.Size, this.Font.Style)
 
-            (this.TopLevelControl :?> Form).Text <- (sprintf "Scroll %s" <| match isUp with | true -> "up" | false -> "down")
-
-            ()
+        this.MouseWheel
+        |> Event.filter (fun args -> 
+            Control.ModifierKeys = Keys.Control && args.Delta <> 0)
+        |> Event.map (fun args -> if args.Delta > 0 then 1.0f else -1.0f)
+        |> Event.add (fun fontSizeDelta ->
+            let oldFont = this.Font
+            let newFont = Font (oldFont.FontFamily, oldFont.Size + fontSizeDelta, oldFont.Style)
+            this.Font <- newFont
+            oldFont.Dispose ())
     with
         ///Initialize an instance of a WatchTreeView without a PluginManager (e.g. when a WatchTreeView is used as the basis for a plugin!).
         new() = new WatchTreeView(None)
