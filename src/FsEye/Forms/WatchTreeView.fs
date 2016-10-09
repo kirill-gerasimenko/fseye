@@ -284,6 +284,13 @@ type WatchTreeView(pluginManager: PluginManager option) as this =
                 il.Images.Add(ir.Name, ir.Image)
 
             il
+
+        this.MouseWheel.Add <| fun args ->
+            let isUp = args.Delta > 0
+
+            (this.TopLevelControl :?> Form).Text <- (sprintf "Scroll %s" <| match isUp with | true -> "up" | false -> "down")
+
+            ()
     with
         ///Initialize an instance of a WatchTreeView without a PluginManager (e.g. when a WatchTreeView is used as the basis for a plugin!).
         new() = new WatchTreeView(None)
