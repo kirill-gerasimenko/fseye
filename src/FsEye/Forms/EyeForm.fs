@@ -16,22 +16,7 @@ limitations under the License.
 namespace Swensen.FsEye.Forms
 open Swensen.FsEye
 open System.Windows.Forms
-open System.Reflection
 open System
-
-module private Win32 = 
-    open FSharp.NativeInterop
-    open System.Runtime.InteropServices
-    open System.Drawing
-
-    let WM_MOUSEWHEEL = 0x20a
-
-    [<DllImport("user32.dll")>]
-    extern nativeint WindowFromPoint(Point pt)
-
-    [<DllImport("user32.dll")>]
-    extern nativeint SendMessage(nativeint hWnd, int msg, nativeint wp, nativeint lp)
-
 
 type EyeForm(pluginManager:PluginManager) as this =
     inherit Form(

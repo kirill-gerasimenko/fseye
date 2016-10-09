@@ -17,6 +17,7 @@ namespace Swensen.FsEye.Forms
 open System.Windows.Forms
 open System.Drawing
 open System.Reflection
+open FSharp.NativeInterop
 
 open Swensen.Utils
 open Swensen.FsEye
@@ -300,6 +301,10 @@ type WatchTreeView(pluginManager: PluginManager option) as this =
     with
         ///Initialize an instance of a WatchTreeView without a PluginManager (e.g. when a WatchTreeView is used as the basis for a plugin!).
         new() = new WatchTreeView(None)
+
+        override this.OnHandleCreated e =
+            Win32.SendMessage(this.Handle, Win32.TVM_SETEXTENDEDSTYLE, Win32.TVS_EX_DOUBLEBUFFER |> nativeint, Win32.TVS_EX_DOUBLEBUFFER |> nativeint) |> ignore
+            base.OnHandleCreated e
 
         member private this.UpdateWatch(tn:TreeNode, value, ty) =
             Control.update this <| fun () ->
