@@ -7,3 +7,5 @@ UpgradeLog.htm
 bin/
 obj/
 build/
+.fake/
+deploy/
