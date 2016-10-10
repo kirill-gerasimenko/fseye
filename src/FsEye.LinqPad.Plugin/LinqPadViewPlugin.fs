@@ -11,11 +11,12 @@ type LinqPadWatchViewer () =
 
     do
         webBrowser.Dock <- DockStyle.Fill
+        webBrowser.IsWebBrowserContextMenuEnabled <- false
         webBrowser |> panel.Controls.Add 
 
     interface IWatchViewer with
         member __.Watch (_,value,_) =
-            use writer = Util.CreateXhtmlWriter (enableExpansions=true)
+            use writer = Util.CreateXhtmlWriter (enableExpansions=true,maxDepth=2)
             writer.Write(value)
             webBrowser.DocumentText <- writer.ToString ()
         member __.Control = 
