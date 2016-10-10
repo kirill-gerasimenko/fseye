@@ -24,7 +24,7 @@ type LinqPadWatchViewer () =
     interface IWatchViewer with
         member __.Watch (name,value,type') =
             label.Text <- sprintf "%s: %s" name type'.Name
-            use writer = Util.CreateXhtmlWriter (enableExpansions=true,maxDepth=2)
+            use writer = Util.CreateXhtmlWriter (enableExpansions=true)
             writer.Write(value)
             webBrowser.DocumentText <- writer.ToString ()
         member __.Control = 
