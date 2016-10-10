@@ -20,8 +20,9 @@ Target "Build" <| fun _ ->
     MSBuildRelease pluginsBuildDir "Build" pluginsProjects |> Log "AppBuild-Output: "
 
 Target "CopyArtefacts" <| fun _ ->
-    Copy deployDir ([ "FsEye.dll"; "FSharp.Core.dll"; "Utils.dll" ] |> Seq.map ((</>) buildDir))
+    Copy deployDir ([ "FsEye.dll";"FSharp.Core.dll";"Utils.dll";"FsEye.NuGet.fsx" ] |> Seq.map ((</>) buildDir))
     Copy pluginsDeployDir ([ "FsEye.LinqPad.Plugin.dll"; "LINQPad.exe" ] |> Seq.map ((</>) pluginsBuildDir))
+    Rename (deployDir </> "FsEye.fsx") (deployDir </> "FsEye.NuGet.fsx") 
 
 // Build order
 "Clean"
