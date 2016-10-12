@@ -9,3 +9,5 @@ obj/
 build/
 .fake/
 deploy/
+src/_ReSharper.Caches/
+src/FsEye.sln.DotSettings.user

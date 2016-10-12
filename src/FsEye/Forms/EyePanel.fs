@@ -18,6 +18,7 @@ open System.Windows.Forms
 open System.Reflection
 open Swensen.FsEye
 
+
 type EyePanel(pluginManager:PluginManager) as this =
     inherit Panel()    
     let continueButton = new Button(Text="Async Continue", AutoSize=true, Enabled=false)
@@ -53,6 +54,24 @@ type EyePanel(pluginManager:PluginManager) as this =
     
         continueButton.Click.Add(fun _ -> continueButton.Enabled <- false)
         buttonPanel.Controls.Add(continueButton)
+
+        let previewCombo = new ComboBox (AutoSize=true)
+        previewCombo.DropDownStyle <- ComboBoxStyle.DropDownList
+
+        ComboItem.Empty 
+        |> previewCombo.Items.Add 
+        |> ignore
+
+        pluginManager.ManagedPlugins 
+        |> Seq.map (ComboItem.Plugin >> box)
+        |> Array.ofSeq 
+        |> previewCombo.Items.AddRange
+
+        match previewCombo.Items.Count with
+        | c when c >= 2 -> previewCombo.SelectedIndex <- 1
+        | _ -> ()
+
+        buttonPanel.Controls.Add previewCombo
     
         this.Controls.Add(buttonPanel)
     with
