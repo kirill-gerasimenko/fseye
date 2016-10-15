@@ -1,5 +1,5 @@
 ﻿[<AutoOpen>]
-module Option = 
+module Option
     let apply fOpt xOpt = 
         match fOpt,xOpt with
         | Some f, Some x -> Some (f x)

@@ -10,4 +10,4 @@ NUGET
     xunit (1.9.1) - framework: >= net40
 GITHUB
   remote: kirill-gerasimenko/fsutils
-    opt.fs (fbf9deabafad8135d5acb6c9b276d2c3bfaaf570)
+    opt.fs (6ece8ee8050b1d93b70c8676f3ca8efba691fdb3)

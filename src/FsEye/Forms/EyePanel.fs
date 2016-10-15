@@ -21,6 +21,7 @@ open Swensen.FsEye
 
 type EyePanel(pluginManager:PluginManager) as this =
     inherit Panel()    
+    let previewCombo = new ComboBox (AutoSize=true)
     let continueButton = new Button(Text="Async Continue", AutoSize=true, Enabled=false)
     let asyncBreak = async {
         let! _ = Async.AwaitEvent continueButton.Click
@@ -55,7 +56,6 @@ type EyePanel(pluginManager:PluginManager) as this =
         continueButton.Click.Add(fun _ -> continueButton.Enabled <- false)
         buttonPanel.Controls.Add(continueButton)
 
-        let previewCombo = new ComboBox (AutoSize=true)
         previewCombo.DropDownStyle <- ComboBoxStyle.DropDownList
 
         ComboItem.Empty 
@@ -76,6 +76,16 @@ type EyePanel(pluginManager:PluginManager) as this =
         this.Controls.Add(buttonPanel)
 
     with
+
+        member this.SelectedPreviewPlugin =
+            match previewCombo.SelectedItem with
+            | null -> None
+            | item ->
+                match item with
+                | :? ComboItem as comboItem -> 
+                    comboItem |> function | Plugin p -> Some p | _ -> None
+                | _ -> None
+
         //a lot of delegation to treeView below -- not sure how to do this better
 
         ///Add or update a watch with the given name, value, and type.

@@ -23,8 +23,6 @@ open Swensen.Utils
 open Swensen.FsEye
 open Swensen.FsEye.WatchModel
 
-open Opt
-
 //Copy / Copy Value context Menu
 
 //for thoughts on cancellation:
@@ -280,6 +278,7 @@ type WatchTreeView(pluginManager: PluginManager option) as this =
                     opt {
                         let! vi = watch.ValueInfo
                         let! pm = pluginManager
+                        //let! 
 
 
                         let label = calcNodeLabel args.Node
@@ -300,7 +299,7 @@ type WatchTreeView(pluginManager: PluginManager option) as this =
 
             il
 
-        this.Font <- Font (this.Font.FontFamily, this.Font.Size, this.Font.Style)
+        this.Font <- new Font (this.Font.FontFamily, this.Font.Size, this.Font.Style)
 
         this.MouseWheel
         |> Event.filter (fun args -> 
@@ -311,7 +310,7 @@ type WatchTreeView(pluginManager: PluginManager option) as this =
             let newSize = 
                 let s = oldFont.Size + fontSizeDelta
                 if s <= 0.0f then 1.0f else s
-            let newFont = Font (oldFont.FontFamily, newSize, oldFont.Style)
+            let newFont = new Font (oldFont.FontFamily, newSize, oldFont.Style)
             this.Font <- newFont
             oldFont.Dispose ())
     with

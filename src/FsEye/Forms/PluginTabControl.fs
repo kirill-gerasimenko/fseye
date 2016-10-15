@@ -103,15 +103,10 @@ type internal PluginTabControl(pluginManager:PluginManager) as this =
             (createTabContextMenu clickedTab).Show(this, e.Location)
     )
 
-    do 
-        AppEvents.onWatchObjectSelected.Subscribe (fun valueInfo ->
-            pluginManager.SendTo (
-            ())
-        |> ignore
-
     [<CLIEvent>]
     ///Fires when a plugin tab has been added (but not if you manually add a tab)
     member __.TabAdded = tabAdded.Publish
+    
     [<CLIEvent>]
     ///Fires when a plugin tab has been removed (but not if you manually add a tab)
     member __.TabRemoved = tabRemoved.Publish
