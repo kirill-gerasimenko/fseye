@@ -273,7 +273,15 @@ type WatchTreeView(pluginManager: PluginManager option) as this =
                 let nodeContextMenu = createNodeContextMenu args.Node
                 if nodeContextMenu.MenuItems.Count > 0 then
                     nodeContextMenu.Show(this, args.Location)
-            else ()
+            else if args.Button = MouseButtons.Left then
+                match args.Node with
+                | Watch(watch) ->
+                    match watch.ValueInfo with
+                    | Some valueInfo ->
+                        let label = calcNodeLabel args.Node 
+                        { valueInfo with Text = label } |> AppEvents.triggerWatchObjectSelected
+                    | None -> ()
+                | _ -> ()
 
         this.AfterSelect.Add (fun args -> afterSelect args.Node)
         this.AfterExpand.Add (fun args -> afterExpand args.Node)
