@@ -21,7 +21,7 @@ open Swensen.FsEye
 
 type EyePanel(pluginManager:PluginManager) as this =
     inherit Panel()    
-    let previewCombo = new ComboBox (AutoSize=true)
+    let previewCombo = new ComboBox ()
     let continueButton = new Button(Text="Async Continue", AutoSize=true, Enabled=false)
     let asyncBreak = async {
         let! _ = Async.AwaitEvent continueButton.Click
@@ -36,9 +36,10 @@ type EyePanel(pluginManager:PluginManager) as this =
 
     do //build button panel and add it to this panel
         let buttonPanel = new FlowLayoutPanel(Dock=DockStyle.Top, AutoSize=true)
+        buttonPanel.FlowDirection <- FlowDirection.LeftToRight
     
         let archiveButton = new Button(Text="Archive Watches", AutoSize=true)
-        archiveButton.Click.Add(fun _ -> this.Archive()) 
+        archiveButton.Click.Add(fun _ -> this.Archive())
         buttonPanel.Controls.Add(archiveButton)
     
         let clearButton = new Button(Text="Clear Archives", AutoSize=true)
@@ -56,6 +57,7 @@ type EyePanel(pluginManager:PluginManager) as this =
         continueButton.Click.Add(fun _ -> continueButton.Enabled <- false)
         buttonPanel.Controls.Add(continueButton)
 
+        previewCombo.Anchor <- AnchorStyles.None
         previewCombo.DropDownStyle <- ComboBoxStyle.DropDownList
 
         ComboItem.Empty 
@@ -70,22 +72,34 @@ type EyePanel(pluginManager:PluginManager) as this =
         match previewCombo.Items.Count with
         | c when c >= 2 -> previewCombo.SelectedIndex <- 1
         | _ -> ()
-
-        buttonPanel.Controls.Add previewCombo
     
+        buttonPanel.Controls.Add previewCombo
+
         this.Controls.Add(buttonPanel)
 
+    let getSelectedPreviewPlugin () =
+        match previewCombo.SelectedItem with
+        | null -> None
+        | item ->
+            match item with
+            | :? ComboItem as comboItem -> 
+                comboItem |> function | Plugin p -> Some p | _ -> None
+            | _ -> None
+    
+    do 
+        AppEvents.onWatchObjectSelected.Subscribe (fun valueInfo ->
+            opt {
+                let! selectedPlugin = getSelectedPreviewPlugin ()
+                if selectedPlugin.Plugin.IsWatchable (valueInfo.Value, valueInfo.Type) then
+                    let existingViewersCount = selectedPlugin.ManagedWatchViewers |> Seq.length
+                    if existingViewersCount > 0 then
+                        pluginManager.SendTo (selectedPlugin.ManagedWatchViewers |> Seq.head, valueInfo.Text, valueInfo.Value, valueInfo.Type)
+                    else
+                        pluginManager.SendTo (selectedPlugin, valueInfo.Text, valueInfo.Value, valueInfo.Type) |> ignore }
+            |> ignore )
+        |> ignore
+
     with
-
-        member this.SelectedPreviewPlugin =
-            match previewCombo.SelectedItem with
-            | null -> None
-            | item ->
-                match item with
-                | :? ComboItem as comboItem -> 
-                    comboItem |> function | Plugin p -> Some p | _ -> None
-                | _ -> None
-
         //a lot of delegation to treeView below -- not sure how to do this better
 
         ///Add or update a watch with the given name, value, and type.

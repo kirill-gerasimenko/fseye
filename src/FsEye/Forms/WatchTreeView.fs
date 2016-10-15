@@ -277,14 +277,9 @@ type WatchTreeView(pluginManager: PluginManager option) as this =
                 | Watch(watch) ->
                     opt {
                         let! vi = watch.ValueInfo
-                        let! pm = pluginManager
-                        //let! 
-
-
                         let label = calcNodeLabel args.Node
-
-                        return ()
-                    } |> ignore
+                        return { vi with Text = label } } 
+                    |> Option.iter AppEvents.triggerWatchObjectSelected
                 | _ -> ()
 
         this.AfterSelect.Add (fun args -> afterSelect args.Node)
