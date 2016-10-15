@@ -74,6 +74,7 @@ type EyePanel(pluginManager:PluginManager) as this =
         buttonPanel.Controls.Add previewCombo
     
         this.Controls.Add(buttonPanel)
+
     with
         //a lot of delegation to treeView below -- not sure how to do this better
 
