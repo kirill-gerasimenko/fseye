@@ -23,6 +23,7 @@ open Swensen.Utils
 open Swensen.FsEye
 open Swensen.FsEye.WatchModel
 
+open Opt
 
 //Copy / Copy Value context Menu
 
@@ -276,11 +277,15 @@ type WatchTreeView(pluginManager: PluginManager option) as this =
             else if args.Button = MouseButtons.Left then
                 match args.Node with
                 | Watch(watch) ->
-                    match watch.ValueInfo with
-                    | Some valueInfo ->
-                        let label = calcNodeLabel args.Node 
-                        { valueInfo with Text = label } |> AppEvents.triggerWatchObjectSelected
-                    | None -> ()
+                    opt {
+                        let! vi = watch.ValueInfo
+                        let! pm = pluginManager
+
+
+                        let label = calcNodeLabel args.Node
+
+                        return ()
+                    } |> ignore
                 | _ -> ()
 
         this.AfterSelect.Add (fun args -> afterSelect args.Node)

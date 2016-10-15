@@ -2,19 +2,19 @@ SRCSRV: ini ------------------------------------------------
 VERSION=2
 SRCSRV: variables ------------------------------------------
 SRCSRVVERCTRL=https
-SRCSRVTRG=https://raw.github.com/fsharp/FAKE/9f27e75dca7bf05734d4df763ae1e41df394c330/%var2%
+SRCSRVTRG=https://raw.github.com/fsharp/FAKE/5d29bac80f7f77aea56e31dd8dd5a42c45eb401e/%var2%
 SRCSRV: source files ---------------------------------------
-C:\code\FAKE\src\app\Fake.Deploy\AppConfig.fs*src/app/Fake.Deploy/AppConfig.fs
-C:\code\FAKE\src\app\Fake.Deploy\Logger.fs*src/app/Fake.Deploy/Logger.fs
-C:\code\FAKE\src\app\Fake.Deploy\DeploymentHelper.fs*src/app/Fake.Deploy/DeploymentHelper.fs
-C:\code\FAKE\src\app\Fake.Deploy\DeployAgentModule.fs*src/app/Fake.Deploy/DeployAgentModule.fs
-C:\code\FAKE\src\app\Fake.Deploy\DeploymentAgent.fs*src/app/Fake.Deploy/DeploymentAgent.fs
-C:\code\FAKE\src\app\Fake.Deploy\AuthenticatedUser.fs*src/app/Fake.Deploy/AuthenticatedUser.fs
-C:\code\FAKE\src\app\Fake.Deploy\UserMapper.fs*src/app/Fake.Deploy/UserMapper.fs
-C:\code\FAKE\src\app\Fake.Deploy\AuthModule.fs*src/app/Fake.Deploy/AuthModule.fs
-C:\code\FAKE\src\app\Fake.Deploy\JSonSerializers.fs*src/app/Fake.Deploy/JSonSerializers.fs
-C:\code\FAKE\src\app\Fake.Deploy\NancyBootStrapper.fs*src/app/Fake.Deploy/NancyBootStrapper.fs
-C:\code\FAKE\src\app\Fake.Deploy\Services.fs*src/app/Fake.Deploy/Services.fs
-C:\code\FAKE\src\app\Fake.Deploy\Installers.fs*src/app/Fake.Deploy/Installers.fs
-C:\code\FAKE\src\app\Fake.Deploy\Program.fs*src/app/Fake.Deploy/Program.fs
+C:\code\fake\src\app\Fake.Deploy\AppConfig.fs*src/app/Fake.Deploy/AppConfig.fs
+C:\code\fake\src\app\Fake.Deploy\Logger.fs*src/app/Fake.Deploy/Logger.fs
+C:\code\fake\src\app\Fake.Deploy\DeploymentHelper.fs*src/app/Fake.Deploy/DeploymentHelper.fs
+C:\code\fake\src\app\Fake.Deploy\DeployAgentModule.fs*src/app/Fake.Deploy/DeployAgentModule.fs
+C:\code\fake\src\app\Fake.Deploy\DeploymentAgent.fs*src/app/Fake.Deploy/DeploymentAgent.fs
+C:\code\fake\src\app\Fake.Deploy\AuthenticatedUser.fs*src/app/Fake.Deploy/AuthenticatedUser.fs
+C:\code\fake\src\app\Fake.Deploy\UserMapper.fs*src/app/Fake.Deploy/UserMapper.fs
+C:\code\fake\src\app\Fake.Deploy\AuthModule.fs*src/app/Fake.Deploy/AuthModule.fs
+C:\code\fake\src\app\Fake.Deploy\JSonSerializers.fs*src/app/Fake.Deploy/JSonSerializers.fs
+C:\code\fake\src\app\Fake.Deploy\NancyBootStrapper.fs*src/app/Fake.Deploy/NancyBootStrapper.fs
+C:\code\fake\src\app\Fake.Deploy\Services.fs*src/app/Fake.Deploy/Services.fs
+C:\code\fake\src\app\Fake.Deploy\Installers.fs*src/app/Fake.Deploy/Installers.fs
+C:\code\fake\src\app\Fake.Deploy\Program.fs*src/app/Fake.Deploy/Program.fs
 SRCSRV: end ------------------------------------------------

@@ -5971,6 +5971,11 @@ Partial validation for folder name, based on http://msdn.microsoft.com/en-us/lib
  Runs the given git command, waits for its completion.
 </summary>
 </member>
+<member name="M:Fake.Git.CommandHelper.directRunGitCommandAndFail(System.String,System.String)">
+<summary>
+ Runs the given git command, waits for its completion and fails when it didn&apos;t succeeded.
+</summary>
+</member>
 <member name="M:Fake.Git.CommandHelper.directRunGitCommand(System.String,System.String)">
 <summary>
  Runs the given git command, waits for its completion and returns whether it succeeded.
